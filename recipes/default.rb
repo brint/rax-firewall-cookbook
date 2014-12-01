@@ -22,7 +22,7 @@
   node['rax']['firewall'][proto].each do |listen_port|
     case node['platform']
     when 'ubuntu'
-      firewall_rule "Firewall rule, tcp/#{listen_port}" do
+      firewall_rule "Firewall rule, #{proto}/#{listen_port}" do
         port      listen_port.to_i
         case proto
         when 'tcp'
