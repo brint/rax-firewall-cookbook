@@ -20,3 +20,6 @@
 
 default['rax']['firewall']['tcp'] = []
 default['rax']['firewall']['udp'] = []
+
+# So far, this attribute only works with the "firewall" cookbook, which uses ufw
+default['rax']['firewall']['enable'] = true
