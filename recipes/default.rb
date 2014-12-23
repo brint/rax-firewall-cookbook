@@ -18,6 +18,18 @@
 # limitations under the License.
 #
 
+# Enable or disable ufw according to a node attribute
+case node['platform']
+when 'ubuntu'
+  firewall 'ufw' do
+    if node['rax']['firewall']['enable']
+      action :enable
+    else
+      action :disable
+    end
+  end
+end
+
 %w( tcp udp ).each do |proto|
   node['rax']['firewall'][proto].each do |listen_port|
     case node['platform']
